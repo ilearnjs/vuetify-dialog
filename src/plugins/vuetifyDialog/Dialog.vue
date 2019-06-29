@@ -37,12 +37,14 @@ export default {
       showDialog: false
     }
   },
+  beforeDestroy() {
+    this.$refs.dialog.$destroy()
+  },
   methods: {
     show() {
       this.showDialog = true
     },
     hide() {
-      this.showDialog = false
       this.$emit('hide')
     },
     ok() {
