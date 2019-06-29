@@ -15,6 +15,22 @@ export default function(props) {
     }
   }
 
+  const on = {
+    ok: () => {
+      onOkFns.forEach(fn => fn())
+      vm.$refs.dialog.hide()
+    },
+    cancel: () => {
+      onCancelFns.forEach(fn => fn())
+      vm.$refs.dialog.hide()
+    },
+    hide: () => {
+      vm.$destroy()
+      vm.$el.remove()
+      vm = null
+    }
+  }
+
   const node = document.createElement('div')
   document.body.appendChild(node)
 
@@ -24,22 +40,8 @@ export default function(props) {
     render(h) {
       return h(Dialog, {
         ref: 'dialog',
-        props: props,
-        on: {
-          ok: () => {
-            onOkFns.forEach(fn => fn())
-            this.$refs.dialog.hide()
-          },
-          cancel: () => {
-            onCancelFns.forEach(fn => fn())
-            this.$refs.dialog.hide()
-          },
-          hide: () => {
-            vm.$destroy()
-            vm.$el.remove()
-            vm = null
-          }
-        }
+        props,
+        on
       })
     },
     mounted() {
