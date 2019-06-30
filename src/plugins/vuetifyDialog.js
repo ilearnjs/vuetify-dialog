@@ -1,4 +1,4 @@
 import Vue from 'vue'
-import vuetifyGlobalDialog from './vuetifyDialog/index'
+import vuetifyDialog from './vuetifyDialog/index'
 
-Vue.use(vuetifyGlobalDialog)
+Vue.use(vuetifyDialog)

@@ -2,6 +2,7 @@
   <v-dialog
     :value="showDialog"
     @input="cancel"
+    :transition="transition"
     max-width="300"
     ref="dialog"
   >
@@ -30,6 +31,10 @@ export default {
     cancelBtnText: {
       type: String,
       default: 'Cancel'
+    },
+    transition: {
+      type: String,
+      default: 'vuetify-dialog'
     }
   },
   data() {
@@ -45,6 +50,7 @@ export default {
       this.showDialog = true
     },
     hide() {
+      this.showDialog = false
       this.$emit('hide')
     },
     ok() {

@@ -25,18 +25,16 @@ export default function(props) {
       vm.$refs.dialog.hide()
     },
     hide: () => {
-      vm.$destroy()
-      vm.$el.remove()
-      vm = null
+      // time to finish transition
+      setTimeout(() => {
+        vm.$destroy()
+        vm.$el.remove()
+        vm = null
+      }, 300)
     }
   }
 
-  const node = document.createElement('div')
-  document.body.appendChild(node)
-
   let vm = new Vue({
-    el: node,
-
     render(h) {
       return h(Dialog, {
         ref: 'dialog',
@@ -45,9 +43,11 @@ export default function(props) {
       })
     },
     mounted() {
-      this.$refs.dialog.show()
+      this.$refs.dialog.showDialog = true
     }
   })
+
+  document.body.querySelector('[data-app]').appendChild(vm.$mount().$el)
 
   return api
 }
