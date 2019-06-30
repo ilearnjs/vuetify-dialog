@@ -1,1 +1,1 @@
-## Global dialog for vuetify
+### Global dialog for vuetify
