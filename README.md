@@ -1,1 +1,1 @@
-## Dialog plugin for Vuetify
+## Global dialog for vuetify
